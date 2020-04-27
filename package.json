@@ -1,0 +1,31 @@
+{
+  "name": "sqlinjection",
+  "version": "1.0.0",
+  "description": "This project will show you the vulnerability of the site by presenting the sql injection.",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "npm tet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yariv1025/SQLInjection.git"
+  },
+  "author": "Yariv Garala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yariv1025/SQLInjection/issues"
+  },
+  "homepage": "https://github.com/yariv1025/SQLInjection#readme",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "express": "^4.17.1",
+    "pg": "^8.0.3"
+  },
+  "devDependencies": {
+    "body-parser": "^1.19.0",
+    "eslinter": "^3.2.1"
+  }
+}

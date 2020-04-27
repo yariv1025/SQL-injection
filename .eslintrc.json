@@ -1,0 +1,55 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "extends": "eslint:recommended",
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "indent": [
+      "error",
+      "tab"
+    ],
+    "linebreak-style": [
+      "error",
+      "windows"
+    ],
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "semi": [
+      "warn",
+      "never"
+    ],
+    "eslint curly": [
+      "warn",
+      "windgit ow"
+    ],
+    "eslint no-extra-parens": [
+      "error",
+      "never"
+    ],
+    "eslint no-multi-spaces": [
+      "error",
+      "never"
+    ],
+    "aeslint ccessor-pairs": [
+      "warn",
+      "window"
+    ],
+    "camelcase": [
+      "warn",
+      "window"
+    ]
+  }
+}
