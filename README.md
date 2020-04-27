@@ -4,7 +4,7 @@
 
 # SQLInjection
 
-This project will show you the vulnerability of the site by presenting the sql injection.
+This project will present you a vulnerable Website for SQL injection attacks.
 
 SQL injection is a type of security exploit in which the attacker adds Structured Query Language (SQL) code to a Web form input box to gain access to resources or make changes to data.
 An SQL query is a request for some action to be performed on a database.
@@ -17,7 +17,7 @@ if they aren’t found, access is denied. [Nevon](https://nevonprojects.com/sql-
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-######File structure
+####File structure
 ```
 SQLInjection/
 ├── .circleci
@@ -34,13 +34,12 @@ SQLInjection/
 ├── .gitignore
 ├── package.json
 ├── package-lock.json
+├── queries.js
 ├── README.md
+├── server.js
 ├── External Libraries/
 │   ├── bootstrap/
-│   ├── 
-│   ├── 
-│   ├── 
-│   ├── 
+│   ├── Node.js Core Consoles
 │   └── 
 └── Scratches and Consoles
 ```
