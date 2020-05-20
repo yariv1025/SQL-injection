@@ -1,3 +1,4 @@
+
 const Pool = require('pg').Pool
 const pool = new Pool({
     user: 'yariv',
@@ -5,18 +6,19 @@ const pool = new Pool({
     database: 'api',
     password: 'Nikol#1805',
     port: 5432,
-})
+});
 
 //GET: multi users
 // inside the pool.query() we put the raw SQL that will touch the api database.
 const getUsers = (request, response) => {
-    pool.query('SELECT * FROM users', (error, results) => {
+    let usersData = pool.query('SELECT * FROM users', (error, results) => {
         if (error) {
             throw error
         }
         response.status(200).json(results.rows)
-    })
-}
+    });
+    console.log(usersData);
+};
 
 //GET: single user
 // inside the pool.query() we put the raw SQL that will touch the api database.
