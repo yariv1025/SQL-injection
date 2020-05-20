@@ -2,6 +2,7 @@
   <img width="250" height="50" src="https://imagehost.imageupload.net/2020/04/27/injection.jpg">
 </p>
 
+
 # SQLInjection
 
 This project will present you a vulnerable Website for SQL injection attacks.
@@ -12,6 +13,7 @@ Typically, on a Web form for user authentication, when a user enters their name 
 If the values entered are found as expected, the user is allowed access.
 if they aren’t found, access is denied. [Nevon](https://nevonprojects.com/sql-injection-prevention/)
 
+`<link>` : https://sql-injection-sce.herokuapp.com/
 
 ## Getting Started
 
@@ -24,10 +26,15 @@ SQLInjection/
 │   └── config.yml
 ├──  node_modules/
 ├── src/
-│   ├── view/
-│   │ └── inedx.html  
-│   ├── 
-│   └── 
+│   └── view/
+│       ├── pages/
+│       │   └── inedx.ejs  
+│       ├── partials/
+│       │   └── footer.ejs  
+│       │   ├── head.ejs
+│       │   └── header.ejs
+│       ├── queries.js
+│       └── server.js
 ├── test/
 │   └── Array.spec.js  
 ├── .eslintrc.json 
@@ -36,7 +43,6 @@ SQLInjection/
 ├── package-lock.json
 ├── queries.js
 ├── README.md
-├── server.js
 ├── External Libraries/
 │   ├── bootstrap/
 │   ├── Node.js Core Consoles
@@ -45,53 +51,30 @@ SQLInjection/
 ```
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
+Firstly you need to clone this repository to your working environment by entering the command
 ```
-Give examples
+git@github.com:yariv1025/SQLInjection.git
 ```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+You need to run the npm install command for you to be able to run this project.
+(This command will download locally all the packages that's needed for the developing and running of this application.)
 
 ```
-until finished
+npm install
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
+After this you need to add "npm running configuration" that will run the "dev" script that's located on this location for running the local server
 ```
-Give an example
+~\package.json
 ```
+After doing so you will be able to run the local server and access the main page of the app on your web browser.
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+The deployment is done automatically by heroku service and can be accessed by this link.
 
 ## Built With
 
@@ -100,20 +83,14 @@ Add additional notes about how to deploy this on a live system
 * [Heroku](https://www.heroku.com/platform) - The web framework used.
 * .etc
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
 ## Authors
-
-* **Yariv Garala** - *Initial work*
+* **Stav Lobel** 
+* **Yariv Garala**
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://www.mit.edu/~amini/LICENSE.md) file for details
 
 ## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+The project was given as assignment in the "Data Security" course in "SCE
+, Shamoon College of Engineering", Ashdod, Israel.

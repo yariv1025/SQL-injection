@@ -1,10 +1,9 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
+const bodyParser = require('body-parser');
 const db = require('./queries');
 const app_port = process.env.PORT || 3000;
-
-// app.set('view engine', 'ejs');
+const path = require('path');
 
 //
 app.use(bodyParser.json());
@@ -15,10 +14,22 @@ app.use(
 );
 
 
+// set the views engine to ejs
+app.set("view engine", "ejs")
+app.set("views", path.join(__dirname + "/views"))
+
 //Home page
-app.get('/', (request, response) => {
-    response.json({ info: 'Node.js, Express, and Postgres API' })
-})
+app.get('/', (req, res) => {
+    // response.json({ info: 'Node.js, Express, and Postgres API' })
+    res.render('pages/index');
+});
+
+
+// about page
+app.get('/about', function(req, res) {
+    res.render('pages/about');
+});
+
 
 
 app.get('/users', db.getUsers);
