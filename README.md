@@ -7,8 +7,8 @@
 
 This project will present you a vulnerable Website for SQL injection attacks.<br>
 SQL injection is the vulnerability that results when you give an attacker the
- ability to influence the Structured Query Language (SQL) queries that an<br>
-application passes to a back-end database.
+ ability to influence the Structured Query Language (SQL) queries that an
+  application passes to a back-end database.
 
 By being able to influence what is passed to the database, the attacker can
  leverage the syntax and capabilities of SQL itself, as well as the power and
@@ -21,8 +21,9 @@ any code that accepts input from an untrusted source and then uses that input
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-####File structure
+<br>
+<br>
+###### File structure
 ```
 SQLInjection/
 ├── .circleci
