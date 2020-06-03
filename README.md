@@ -5,16 +5,19 @@
 
 # SQLInjection
 
-This project will present you a vulnerable Website for SQL injection attacks.
+This project will present you a vulnerable Website for SQL injection attacks.<br>
+SQL injection is the vulnerability that results when you give an attacker the
+ ability to influence the Structured Query Language (SQL) queries that an<br>
+application passes to a back-end database.
 
-SQL injection is a type of security exploit in which the attacker adds Structured Query Language (SQL) code to a Web form input box to gain access to resources or make changes to data.
-An SQL query is a request for some action to be performed on a database.
-Typically, on a Web form for user authentication, when a user enters their name and password into the text boxes provided for them, those values are inserted into a SELECT query.
-If the values entered are found as expected, the user is allowed access.
-if they aren’t found, access is denied. [Nevon](https://nevonprojects.com/sql-injection-prevention/)
+By being able to influence what is passed to the database, the attacker can
+ leverage the syntax and capabilities of SQL itself, as well as the power and
+  flexibility of supporting database functionality and operating system
+   functionality available to the database.
 
-`<link>` : https://sql-injection-sce.herokuapp.com/
-
+any code that accepts input from an untrusted source and then uses that input
+ to form dynamic SQL statements could be vulnerable.
+ 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -28,6 +31,7 @@ SQLInjection/
 ├── src/
 │   └── view/
 │       ├── pages/
+│       │   ├── about.ejs
 │       │   └── inedx.ejs  
 │       ├── partials/
 │       │   └── footer.ejs  
@@ -41,13 +45,9 @@ SQLInjection/
 ├── .gitignore
 ├── package.json
 ├── package-lock.json
-├── queries.js
 ├── README.md
 ├── External Libraries/
-│   ├── bootstrap/
-│   ├── Node.js Core Consoles
-│   └── 
-└── Scratches and Consoles
+└── Scratches and Consoles/
 ```
 ### Prerequisites
 
@@ -69,19 +69,23 @@ After this you need to add "npm running configuration" that will run the "dev" s
 ```
 ~\package.json
 ```
-After doing so you will be able to run the local server and access the main page of the app on your web browser.
+After doing so you will be able to run the local server and access the main
+ page of the app on your web browser through express server.
 
 
 ## Deployment
 
-The deployment is done automatically by heroku service and can be accessed by this link.
+The deployment is done automatically by the Heroku service and can be
+ accessed by the link below.<br>
+`Heroku cloud` : https://sql-injection-sce.herokuapp.com/
 
 ## Built With
 
 * [ExpressJS](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js
 * [Bootstrap](https://getbootstrap.com/) - Open source toolkit for developing with HTML, CSS, and JS.
+* [EJS](https://ejs.co/) - Embedded JavaScript templates.
 * [Heroku](https://www.heroku.com/platform) - The web framework used.
-* .etc
+* [pgAdmin](https://www.pgadmin.org/) - Advanced Open Source database. 
 
 ## Authors
 * **Stav Lobel** 
