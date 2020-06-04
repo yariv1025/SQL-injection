@@ -31,18 +31,6 @@ app.get('/', async (req, res) => {
 });
 
 
-// Getting user login details
-// app.post('/login', (req, res) => {
-//     const email = req.body.email
-//     const password = req.body.password
-//
-//     console.log("User email is: " + email + "\nUser password is: " + password);
-//
-//
-//     res.send("login")
-// });
-
-
 // Sign up to the website - user data will be inserted to the DB.
 app.post('/signup', async (req, res) => {
     let results = {};

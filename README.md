@@ -66,10 +66,15 @@ You need to run the npm install command for you to be able to run this project.
 npm install
 ```
 
-After this you need to add "npm running configuration" that will run the "dev" script that's located on this location for running the local server
+After this you have 2 choices:
+1. write in the terminal the command: "npm run dev"
+2. Add "npm running configuration" that will run the
+ "dev" script that's located in:
 ```
 ~\package.json
 ```
+ for running the local server.
+ 
 After doing so you will be able to run the local server and access the main
  page of the app on your web browser through express server.
 
