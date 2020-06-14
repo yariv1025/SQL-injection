@@ -1,4 +1,5 @@
-const Pool = require('pg').Pool
+// DataBase connection initialize
+const Pool = require('pg').Pool;
 const pool = new Pool({
     user: 'yariv',
     host: 'localhost',
@@ -92,19 +93,6 @@ const deleteUser = async (email) => {
 //-----------------------------------------------------------------------------
 
 
-//GET: multi users
-// inside the pool.query() we put the raw SQL that will touch the api database.
-const getUsers = (request, response) => {
-    let usersData = pool.query('SELECT * FROM users', (error, results) => {
-        if (error) {
-            throw error
-        }
-        response.status(200).json(results.rows)
-    });
-    console.log(usersData);
-};
-
-
 //GET: single user
 // inside the pool.query() we put the raw SQL that will touch the api database.
 const getUserByPass = (request, response) => {
@@ -119,25 +107,16 @@ const getUserByPass = (request, response) => {
 };
 
 
-//POST: in this function, we’re extracting the name and email properties from the request body, and INSERTing the values.
-// inside the pool.query() we put the raw SQL that will touch the api database.
-// const createUser = (request, response) => {
-//      const {username, email} = request.body;
-//
-//     pool.query('INSERT INTO users (email, password) VALUES ($1, $2)', [username, email], (error, results) => {
-//         if (error) {
-//             throw error
-//         }
-//         // response.status(201).send(`User added with ID: ${result.insertId}`)
-//     })
-// };
+//-----------------------------------------------------------------------------
 
+
+//Future feature!
 
 //PUT: for this query, we’ll combine GET and POST to use the UPDATE clause.
 // inside the pool.query() we put the raw SQL that will touch the api database.
 const updateUser = (request, response) => {
     //const id = parseInt(request.params.id)
-    const {name, email} = request.body
+    const {name, email} = request.body;
 
     pool.query(
         'UPDATE users SET name = $1, email = $2',
@@ -149,20 +128,25 @@ const updateUser = (request, response) => {
             //response.status(200).send(`User modified with ID: ${id}`)
         }
     )
-}
+};
+
+//-----------------------------------------------------------------------------
 
 
-// Delete a specific user by password.
-// const deleteUser = (request, response) => {
-//     const pass = parseInt(request.params.password)
-//
-//     pool.query('DELETE FROM users WHERE pass = $1', [pass], (error, results) => {
-//         if (error) {
-//             throw error
-//         }
-//         response.status(200).send(`User deleted with PASSWORD: ${pass}`)
-//     })
-// }
+//Future feature!
+
+//GET: multi users
+// inside the pool.query() we put the raw SQL that will touch the api database.
+const getUsers = (request, response) => {
+    let usersData = pool.query('SELECT * FROM users', (error, results) => {
+        if (error) {
+            throw error
+        }
+        // response.status(200).json(results.rows)
+    });
+    console.log(usersData);
+};
+
 
 //-----------------------------------------------------------------------------
 

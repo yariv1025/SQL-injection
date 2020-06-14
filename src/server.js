@@ -1,12 +1,19 @@
+// Server initialization
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const db = require('./queries');
 const app_port = process.env.PORT || 3000;
 const path = require('path');
-const client = require("express");
+// const client = require("express");
+// const Pool = require('pg').Pool;
 
-//
+
+//-----------------------------------------------------------------------------
+
+
+// Parse incoming request bodies in a middleware before your handlers,
+// available under the req.body property.
 app.use(
     bodyParser.urlencoded({
         extended: true,
@@ -15,8 +22,14 @@ app.use(
 app.use(bodyParser.json());
 
 
+//-----------------------------------------------------------------------------
+
+
 // define 'public' folder as static
 // app.use(express.static("src"));
+
+
+//-----------------------------------------------------------------------------
 
 
 // set the views engine to ejs
@@ -24,11 +37,22 @@ app.set("view engine", "ejs")
 app.set("views", path.join(__dirname + "/views"));
 
 
+//-----------------------------------------------------------------------------
+
+
 //Home page
 app.get('/', async (req, res) => {
     // response.json({ info: 'Node.js, Express, and Postgres API' })
     res.render('pages/index');
 });
+
+
+// about page
+app.get('/about', function (req, res) {
+    res.render('pages/about');
+});
+
+//-----------------------------------------------------------------------------
 
 
 // Sign up to the website - user data will be inserted to the DB.
@@ -48,11 +72,7 @@ app.post('/signup', async (req, res) => {
 });
 
 
-
-// about page
-app.get('/about', function (req, res) {
-    res.render('pages/about');
-});
+//-----------------------------------------------------------------------------
 
 
 // search a user in our PGDataBase
@@ -74,13 +94,25 @@ app.get('/search', async (req, res) => {
     } catch (e) {
         console.log("Error");
     }
-    // finally {
-    //     res.setHeader("content-type", "application/json")
-    //     res.send(JSON.stringify(results.row));
-    // }
     res.send(results.rows);
-    // res.render('page/index', {results: results.rows});
+    res.render('page/index', {results: results.rows});
 });
+
+
+//-----------------------------------------------------------------------------
+
+
+// //Fix function that not allow us to make SQLInjection
+// app.get('/search', async (req,res) => {
+//     const email = req.query.search_word;
+//     console.log(email);
+//     let results = await db.getUserByPass(search_word);
+//     console.log(results);
+//     res.send(results.rows);
+// });
+
+
+//-----------------------------------------------------------------------------
 
 
 // send the email of the user to queries.js file for deleting
@@ -101,14 +133,11 @@ app.get('/userToDelete', async (req, res) => {
     }
 });
 
-app.get('/users', db.getUsers);
-app.get('/users/:pass', db.getUserByPass);
-app.post('/users', db.createUser);
-app.put('/users/:pass', db.updateUser);
-app.delete('/users/:pass', db.deleteUser);
+
+//-----------------------------------------------------------------------------
 
 
-// Remains at the bottom of the page
+// Server listener - Remains at the bottom of the page
 app.listen(app_port);// port 3000
 console.log(`app is running. port: ${app_port}`);
 console.log(`http://127.0.0.1:${app_port}/`);
