@@ -3,10 +3,9 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const db = require('./queries');
+const validator = require('validator');
 const app_port = process.env.PORT || 3000;
 const path = require('path');
-// const client = require("express");
-// const Pool = require('pg').Pool;
 
 
 //-----------------------------------------------------------------------------
@@ -25,13 +24,6 @@ app.use(bodyParser.json());
 //-----------------------------------------------------------------------------
 
 
-// define 'public' folder as static
-// app.use(express.static("src"));
-
-
-//-----------------------------------------------------------------------------
-
-
 // set the views engine to ejs
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname + "/views"));
@@ -43,7 +35,7 @@ app.set("views", path.join(__dirname + "/views"));
 //Home page
 app.get('/', async (req, res) => {
     // response.json({ info: 'Node.js, Express, and Postgres API' })
-    res.render('pages/index');
+    res.render('pages/index', {results: []});
 });
 
 
@@ -81,35 +73,29 @@ app.get('/search', async (req, res) => {
     let results = {};
     results.row = [];
     try {
-        //takes the input from the web => WRONG IDEA!!! -> we must to check
-        // the input!
-        const userString = req.query.search_word;
-        console.log("User input is: " + userString);
-        const query = `select * from users where email = '${userString}'`;
-        console.log("Full query is: " + query);
+        const search_method = req.query.search_method; //method: could be
+        // equal to 'safe' || 'unsafe'
 
+        const userString = req.query.search_word; //takes the input from the
+        // web => WRONG IDEA!!!
+
+        const escaped_userString = validator.escape(userString); //takes the
+        // input from the web and check the string
+
+        //choose our method (safe || unsafe) and perform the query
+        const query_parameter = search_method === "safe" ? escaped_userString : userString;
+        const query = `select * from users where email = '${query_parameter}'`;
+
+        console.log("Full query is: " + query);
         // The data we query from the DB
         results = await db.run_query(query);
         console.log(results.rows);
     } catch (e) {
         console.log("Error");
     }
-    res.send(results.rows);
-    res.render('page/index', {results: results.rows});
+
+    res.render('pages/index', {results: results.rows});
 });
-
-
-//-----------------------------------------------------------------------------
-
-
-// //Fix function that not allow us to make SQLInjection
-// app.get('/search', async (req,res) => {
-//     const email = req.query.search_word;
-//     console.log(email);
-//     let results = await db.getUserByPass(search_word);
-//     console.log(results);
-//     res.send(results.rows);
-// });
 
 
 //-----------------------------------------------------------------------------

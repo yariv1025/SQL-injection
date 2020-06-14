@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
     <%- include('../partials/head') %>
+
 </head>
 <body class="container">
 
@@ -21,39 +22,46 @@
             SQL injection can be present in any front-end application
             accepting data entry from a system or user, which is then used to
             access a database server.<br>
-            In a Web environment, the Web browser is a client acting as a front-end requesting data from the user and sending them to the remote server which will
+            In a Web environment, the Web browser is a client acting as a
+            front-end requesting data from the user and sending them to the
+            remote server which will
             create SQL queries using the submitted data.<br>
             <br>
-            <h5>"Credit: SQL Injection Attacks and Defense - Second
+        <h5>"Credit: SQL Injection Attacks and Defense - Second
             Edition"</h5>
         </p>
     </div>
 
+
     <!--Table-->
-    <div class="container">
-        <table class="table">
-            <br>
-            <!--table titles-->
-            <thead class="thead-primary">
-            <tr class="text-center">
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
-                <th>Email</th>
-                <th>password</th>
-            </tr>
-            </thead>
+    <% if (Array.isArray(results) && results.length > 0){ %>
+        <div class="container">
+            <table class="table">
 
-            <!--/Table Row-->
-            <tr>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
-                <td>email@email.com</td>
-                <td>pass911</td>
-            </tr>
+                <!--table titles-->
+                <thead class="thead-primary">
 
-        </table>
+                <tr class="text-center">
+                    <th>Email</th>
+                    <th>password</th>
+                </tr>
+                </thead>
 
-    </div>
+                <!--/Table Row-->
+                <% for(const row of results) { %>
+                    <tr>
+                        <td class="Email">
+                            <h3><%= row.email %></h3>
+                        </td>
+                        <td class="password">
+                            <h3><%= row.pass %></h3>
+                        </td>
+                    </tr>
+                <% } %>
+
+            </table>
+        </div>
+    <% } %>
 </main>
 
 <footer>
