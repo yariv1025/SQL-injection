@@ -1,18 +1,30 @@
 // Server initialization
 const express = require('express');
 const app = express();
+
+// body-parser is a piece of express middleware that reads a form's input
+// and stores it as a javascript object accessible through req.body
 const bodyParser = require('body-parser');
+
+// queries.js file
 const db = require('./queries');
+
+//This library validates and sanitizes strings only.
+// Passing anything other than a string is an error.
 const validator = require('validator');
+
+// Listening to express port
 const app_port = process.env.PORT || 3000;
+
+// Including the Path module in our application
 const path = require('path');
 
 
 //-----------------------------------------------------------------------------
 
 
-// Parse incoming request bodies in a middleware before your handlers,
-// available under the req.body property.
+// body-parser is a piece of express middleware that reads a form's input
+// and stores it as a javascript object accessible through req.body
 app.use(
     bodyParser.urlencoded({
         extended: true,
@@ -25,7 +37,7 @@ app.use(bodyParser.json());
 
 
 // set the views engine to ejs
-app.set("view engine", "ejs")
+app.set("view engine", "ejs");
 app.set("views", path.join(__dirname + "/views"));
 
 
@@ -39,7 +51,7 @@ app.get('/', async (req, res) => {
 });
 
 
-// about page
+// about page - FUTURE PAGE
 app.get('/about', function (req, res) {
     res.render('pages/about');
 });
@@ -71,7 +83,7 @@ app.post('/signup', async (req, res) => {
 // this function will allow us to make SQLInjection
 app.get('/search', async (req, res) => {
     let results = {};
-    results.row = [];
+    // results.row = [];
     try {
         const search_method = req.query.search_method; //method: could be
         // equal to 'safe' || 'unsafe'
@@ -105,16 +117,17 @@ app.get('/search', async (req, res) => {
 app.get('/userToDelete', async (req, res) => {
     let results = {};
     results.row = [];
-    try {
-        const userEmail = req.query.userToDelete;
-        console.log("The user " + userEmail + " will be deleted!");
 
+    const userEmail = req.query.userToDelete;
+    console.log("The user " + userEmail + " will be deleted!");
+
+    try {
         results = await db.deleteUser(userEmail);
         console.log(results);
     } catch (e) {
         console.log("Error");
     } finally {
-        res.setHeader("content-type", "application/json")
+        res.setHeader("content-type", "application/json");
         res.send(JSON.stringify(results));
     }
 });

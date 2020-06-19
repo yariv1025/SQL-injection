@@ -26,7 +26,7 @@
         </button>
     </form>
 
-    <!--Search for username and password fields-->
+    <!--Delete user by email-->
     <form action="userToDelete" method="get"
           class="navbar-form navbar-right" role="search">
         <div id=userToDelete class="form-group">
@@ -38,13 +38,14 @@
         </button>
     </form>
 
-    <!--Search for username and password fields-->
+    <!--Search by a username fields-->
     <form action="search" method="get"
           class="navbar-form navbar-right" role="search">
         <div id=search class="form-group">
             <input type="text" class="form-control" name="search_word"
                    placeholder="' or '2' = '2" required>
         </div>
+        <!--Search method-->
         <div id=search class="form-group">
             <select class="custom-select" name="search_method">
                 <option value="unsafe"selected>unsafe</option>
@@ -55,14 +56,13 @@
         <button type="submit" value="search" class="btn btn-default
             btn-success">Search
         </button>
-
     </form>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="https://github
-                .com/yariv1025/SQLInjection">GitHub Repo</a>
+                <a class="nav-link" href="https://github.com/yariv1025/SQLInjection">
+                    <h4>Fork from GitHub</h4></a>
             </li>
         </ul>
 

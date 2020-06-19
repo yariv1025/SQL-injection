@@ -1,5 +1,8 @@
 // DataBase connection initialize
+// First we will import the Pool Class from the pg module:
 const Pool = require('pg').Pool;
+
+// Then, let's create a new pool object:
 const pool = new Pool({
     user: 'yariv',
     host: 'localhost',
@@ -90,7 +93,7 @@ const deleteUser = async (email) => {
 };
 
 
-//-----------------------------------------------------------------------------
+//---------------------------##FUTURE FEATURE##--------------------------------
 
 
 //GET: single user
@@ -107,7 +110,7 @@ const getUserByPass = (request, response) => {
 };
 
 
-//-----------------------------------------------------------------------------
+//---------------------------##FUTURE FEATURE##--------------------------------
 
 
 //Future feature!
@@ -130,7 +133,8 @@ const updateUser = (request, response) => {
     )
 };
 
-//-----------------------------------------------------------------------------
+
+//---------------------------##FUTURE FEATURE##--------------------------------
 
 
 //Future feature!
