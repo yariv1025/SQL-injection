@@ -4,8 +4,8 @@
 <html lang="en">
 <head>
     <%- include('../partials/head') %>
-
 </head>
+
 <body class="container">
 
 <header>
@@ -13,11 +13,17 @@
 </header>
 
 <main>
-    <div class="jumbotron jumbotron-fluid" style="background: #aaa;">
-        <h1>SQL Injection Simulation</h1>
+
+    <div class="jumbotron jumbotron-fluid text-center" style="background: #aaa;">
+
+        <br><br><br>
+
+        <h1>SQLI Simulator & Vulnerable Scanner</h1>
+
         <h3>Our main goal is to present to you the server
-            response and the SQL injection vulnerability.</h3>
-        <br>
+            response and the SQL injection vulnerability.
+        </h3><br>
+
         <p>
             SQL injection can be present in any front-end application
             accepting data entry from a system or user, which is then used to
@@ -27,41 +33,81 @@
             remote server which will
             create SQL queries using the submitted data.<br>
             <br>
-        <h5>"Credit: SQL Injection Attacks and Defense - Second
-            Edition"</h5>
+            An attacker wishing to execute SQL injection manipulates a standard SQL query to exploit non-validated input vulnerabilities in a database.
+            There are many ways that this attack vector can be executed, but
+            we will explain to you the general idea about how SQLI works:<br>
+            <br>
+
+            A typical SQL database query may look like the following:
+
+                <h4>SELECT name, password
+                FROM users
+                WHERE name = username</h4><br>
+
+            <p>The web application (Back-end) builds a string query that is
+                sent to the
+                database as a single SQL statement:</p><br>
+
+                <h4>SELECT name, password FROM users WHERE name = "
+                & Request.QueryString("username")</h4><br>
+
+            <p>A user-provided:</p>
+
+                <h4>input http://www.sqli.com/users/injectionSimulation?username=check@domain.com</h4></p>
+
+            <p>can then generates the following SQL query:</p>
+
+                <h4>SELECT name, password
+                    FROM users
+                    WHERE username = check@domain.com</h4>
+
+            <p>
+                As you can gather from the syntax, this query provides the
+                name and password for username: check@domain.com.<br>
+                <br>
+                For example, the above-mentioned input, which pulls information
+                a specific user,can be altered to
+                read: <h4>http://www.sqli.com/users/injectionSimulation?username=check@domain.com or 1=1.</h4><br>
+            </p>
+
+            <p>
+                As a result, the corresponding SQL query looks like this:
+                <h4>SELECT name, password
+                    FROM users
+                    WHERE username=check@domain.com OR 1=1</h4>
+            </p>
+
+            <p>
+                And since the statement 1 = 1 is always true, the query returns
+                all of the users names and passwords in the database,
+                even those that you may not be eligible to access.<br>
+                <br>
+                Attackers are also able to take advantage of incorrectly
+                filtered characters to alter SQL commands, including using a
+                semicolon to separate two fields.
+                For example, this input:<br>
+                <h4>http://www.sqli.com/users/injectionSimulation?username=check@domain.com;
+                DROP TABLE Users;
+                </h4>
+            </p>
+
+            <p>
+                would generate the following SQL query:
+                <h4>SELECT name, password
+                    FROM users
+                    WHERE username=check@domain.com; DROP TABLE USERS;</h4>
+            </p>
+
+            <p>
+                As a result, the entire user database could be deleted.
+            </p>
+
+            <br><br> <br>
+            <h5>Credit: SQL Injection Attacks and Defense - Second
+            Edition & imperva.com</h5>
         </p>
     </div>
 
-
-    <!--Table-->
-    <% if (Array.isArray(results) && results.length > 0){ %>
-        <div class="container">
-            <table class="table">
-
-                <!--table titles-->
-                <thead class="thead-primary">
-
-                <tr class="text-center">
-                    <th>Email</th>
-                    <th>password</th>
-                </tr>
-                </thead>
-
-                <!--/Table Row-->
-                <% for(const row of results) { %>
-                    <tr>
-                        <td class="Email">
-                            <h3><%= row.email %></h3>
-                        </td>
-                        <td class="password">
-                            <h3><%= row.pass %></h3>
-                        </td>
-                    </tr>
-                <% } %>
-
-            </table>
-        </div>
-    <% } %>
 </main>
 
 <footer>

@@ -20,7 +20,7 @@ any code that accepts input from an untrusted source and then uses that input
  
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See Instructions for notes on how to deploy the project on a live system.
 <br>
 <br>
 ###### File structure
@@ -33,11 +33,14 @@ SQLInjection/
 │   └── view/
 │       ├── pages/
 │       │   ├── about.ejs
-│       │   └── inedx.ejs  
+│       │   └── inedx.ejs
+│       │   └── injectionScan.ejs
+│       │   └── injectionSimulation.ejs  
 │       ├── partials/
 │       │   └── footer.ejs  
 │       │   ├── head.ejs
 │       │   └── header.ejs
+│       ├── injectionScanner.js
 │       ├── queries.js
 │       └── server.js
 ├── test/

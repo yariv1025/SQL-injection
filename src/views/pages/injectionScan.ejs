@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+
+<body>
+
+<header>
+    <%- include('../partials/header') %>
+</header>
+
+<div class="container" style="background: #aaa; margin-top: 70px;">
+    <div class="text-center">
+        <h1>injection Scanner</h1>
+        <p class="font-weight-bold">Search for SQL Injection in url.</p>
+    </div>
+
+    <div class="align-content-between row">
+
+        <form class="form-inline" method="get">
+            <div class="form-group mb-2">
+                <!--                <label class="sr-only" for="Scan">Username Search</label>-->
+                <label>
+                    <input type="text" name="url_lookup"
+                           placeholder="ex: domain"
+                           style="margin-left:150px;width:800px;"/>
+                </label>
+            </div>
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+                    id="login_submit"
+                    style="margin-left:15px">Scan URL
+            </button>
+        </form>
+    </div>
+
+    <!--Table-->
+    <% if (!(typeof results === 'undefined') && Array
+            .isArray(results) && results.length > 0){ %>
+        <div class="container">
+            <table class="table">
+
+                <!--table titles-->
+                <thead class="thead-primary">
+
+                <tr>
+                    <th><h2>parameterName</h2></th>
+                    <th><h2>isVulnerable</h2></th>
+                    <th><h2>percent</h2></th>
+                </tr>
+                </thead>
+
+                <!--/Table Row-->
+                <% for(const row of results) { %>
+                    <tr>
+                        <td class="parameterName">
+                            <h4><%= row.parameterName %></h4>
+                        </td>
+                        <td class="isVulnerable">
+                            <h4><%= row.isVulnerable %></h4>
+                        </td>
+                        <td class="percent">
+                            <h4><%= row.percent %></h4>
+                        </td>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+    <% } %>
+</div>
+
+
+<footer>
+    <%- include('../partials/footer') %>
+</footer>
+</body>
+</html>
+

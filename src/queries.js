@@ -1,4 +1,4 @@
-// DataBase connection initialize
+//---------------------DataBase connection initialize--------------------------
 // First we will import the Pool Class from the pg module:
 const Pool = require('pg').Pool;
 
@@ -12,11 +12,11 @@ const pool = new Pool({
 });
 
 
-//-----------------------------------------------------------------------------
+//------------------------General-Running-Query-method-------------------------
 
 
 /*
- * Running the user query from the "Search engine".
+ * Running the user query from the "Inject engine".
  */
 const run_query = async (query) => {
     let usersData;
@@ -29,7 +29,7 @@ const run_query = async (query) => {
 };
 
 
-//-----------------------------------------------------------------------------
+//----------------------------User-Creation-method-----------------------------
 
 
 /*
@@ -41,7 +41,7 @@ const createUser = async (email, pass) => {
    // Check if user already exist in our DB.
     try{
         userExist = await run_query("select * from users where email = '" + email + "' and pass = '" + pass + "'");
-    }
+}
     catch (e) {
         console.log(e);
     }
@@ -61,7 +61,7 @@ const createUser = async (email, pass) => {
 };
 
 
-//-----------------------------------------------------------------------------
+//----------------------------User-Delete-method-------------------------------
 
 
 /*
@@ -113,8 +113,6 @@ const getUserByPass = (request, response) => {
 //---------------------------##FUTURE FEATURE##--------------------------------
 
 
-//Future feature!
-
 //PUT: for this query, we’ll combine GET and POST to use the UPDATE clause.
 // inside the pool.query() we put the raw SQL that will touch the api database.
 const updateUser = (request, response) => {
@@ -137,8 +135,6 @@ const updateUser = (request, response) => {
 //---------------------------##FUTURE FEATURE##--------------------------------
 
 
-//Future feature!
-
 //GET: multi users
 // inside the pool.query() we put the raw SQL that will touch the api database.
 const getUsers = (request, response) => {
@@ -152,7 +148,7 @@ const getUsers = (request, response) => {
 };
 
 
-//-----------------------------------------------------------------------------
+//----------------------------------Exports------------------------------------
 
 
 //in order to access these functions from server.js, we’ll export them.

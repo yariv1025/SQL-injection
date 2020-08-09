@@ -1,0 +1,137 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+
+<header>
+    <%- include('../partials/header') %>
+</header>
+
+<main>
+    <div class="container" style="background: #aaa; margin-top: 70px;">
+        <div class="text-center">
+            <h1>SQL Injection Simulation</h1>
+        </div>
+
+        <!--Inject by a username fields-->
+        <div class="align-content-between row">
+
+            <div class="col-sm">
+                <form action="inject" method="get"
+                      class="navbar-form" role="form">
+
+                    <div id=inject class="form-group">
+                        <label>
+                            <input type="text" class="form-control"
+                                   name="inject_word"
+                                   placeholder="' or '2' = '2" required>
+                        </label>
+                    </div>
+
+                    <!--Inject method-->
+                    <div id=inject class="form-group">
+                        <label>
+                            <select class="custom-select" name="inject_method">
+                                <option value="unsafe" selected>unsafe</option>
+                                <option value="safe">safe</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <button type="submit" value="inject"
+                            class="btn btn-outline-success my-2 my-sm-0">Inject
+                    </button>
+                </form>
+            </div>
+
+            <div class="col-sm">
+                <!--Delete user by email-->
+                <form action="userToDelete" method="get"
+                      class="navbar-form" role="form">
+                    <div id=userToDelete class="form-group">
+                        <label>
+                            <input type="text" class="form-control"
+                                   name="userToDelete"
+                                   placeholder="Data@security.com" required>
+                        </label>
+                    </div>
+
+                    <button type="submit" value="userToDelete"
+                            class="btn btn-outline-success my-2 my-sm-0">Delete
+                        User
+                    </button>
+                </form>
+            </div>
+
+
+            <div class="col-sm">
+                <!--Signup form-->
+                <form action="signup" method="post"
+                      class="navbar-form" role="form">
+
+                    <div id=email class="form-group">
+                        <label>
+                            <input type="email" class="form-control"
+                                   name="email"
+                                   placeholder="Data@security.com" required>
+                        </label>
+                    </div>
+
+                    <div id=password class="form-group">
+                        <label>
+                            <input type="password" class="form-control"
+                                   name="password"
+                                   placeholder="Password" required>
+                        </label>
+                    </div>
+
+                    <button type="submit" value="Send"
+                            class="btn btn-outline-success my-2 my-sm-0">Sign Up
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--Table-->
+    <% if (Array.isArray(results) && results.length > 0){ %>
+        <div class="container">
+            <table class="table">
+
+                <!--table titles-->
+                <thead class="thead-primary">
+
+                <tr>
+                    <th><h2>Email</h2></th>
+                    <th><h2>password</h2></th>
+                </tr>
+                </thead>
+
+                <!--/Table Row-->
+                <% for(const row of results) { %>
+                    <tr>
+                        <td class="Email">
+                            <h4><%= row.email %></h4>
+                        </td>
+                        <td class="password">
+                            <h4><%= row.pass %></h4>
+                        </td>
+                    </tr>
+                <% } %>
+
+            </table>
+        </div>
+    <% } %>
+</main>
+
+<footer>
+    <%- include('../partials/footer') %>
+</footer>
+
+</body>
+</html>

@@ -1,71 +1,48 @@
 <!-- views/partials/header.ejs -->
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Data Security Project<br></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarsExampleDefault"
-            aria-controls="navbarsExampleDefault" aria-expanded="false"
-            aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <!--username and password fields-->
-    <form action="signup" method="post"
-          class="navbar-form navbar-right" role="search">
-        <div id=email class="form-group">
-            <input type="email" class="form-control" name="email"
-                   placeholder="Data@security.com" required>
-        </div>
-        <div id=password class="form-group">
-            <input type="password" class="form-control" name="password"
-                   placeholder="Password" required>
-        </div>
+    <ul class="navbar-nav mr-auto">
 
-        <button type="submit" value="Send" class="btn btn-default
-            btn-success">Sign Up
-        </button>
-    </form>
+        <!--Navbar title-->
+        <li class="nav-item">
+            <a class="navbar-brand" href="/">
+                <h3>Data Security Project</h3>
+            </a>
+        </li>
 
-    <!--Delete user by email-->
-    <form action="userToDelete" method="get"
-          class="navbar-form navbar-right" role="search">
-        <div id=userToDelete class="form-group">
-            <input type="text" class="form-control" name="userToDelete"
-                   placeholder="Data@security.com" required>
-        </div>
-        <button type="submit" value="userToDelete" class="btn btn-default
-            btn-success">Delete User
-        </button>
-    </form>
+        <!--injection Simulation-->
+        <li class="nav-item">
+            <a class="nav-link" href="/injectionSimulation"><h4>Injection
+                    simulation</h4>
+            </a>
+        </li>
 
-    <!--Search by a username fields-->
-    <form action="search" method="get"
-          class="navbar-form navbar-right" role="search">
-        <div id=search class="form-group">
-            <input type="text" class="form-control" name="search_word"
-                   placeholder="' or '2' = '2" required>
-        </div>
-        <!--Search method-->
-        <div id=search class="form-group">
-            <select class="custom-select" name="search_method">
-                <option value="unsafe"selected>unsafe</option>
-                <option value="safe">safe</option>
-            </select>
-        </div>
+        <!--Injection Scanner-->
+        <li class="nav-item">
+            <a class="nav-link" href="/injectionscan">
+                <h4>Injection scanner</h4>
+            </a>
+        </li>
 
-        <button type="submit" value="search" class="btn btn-default
-            btn-success">Search
-        </button>
-    </form>
+        <!--About-->
+        <li class="nav-item">
+            <a class="nav-link" href="/About">
+                <h4>About</h4>
+            </a>
+        </li>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    </ul>
+
+    <!--    class = collapse navbar-collapse-->
+    <div class="nav justify-content-end" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" href="https://github.com/yariv1025/SQLInjection">
-                    <h4>Fork from GitHub</h4></a>
+                    <h4>GitHub</h4>
+                </a>
             </li>
         </ul>
-
     </div>
 </nav>
 <!--bootstrap template end-->
