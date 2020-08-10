@@ -172,8 +172,6 @@ app.get('/injectionscan', async (req, res) => {
             'stavlobel@gmail.com',
             'yariv1052@gmail.com',
             'name@domain.com',
-            numbers,
-            characters,
         ];
 
          // Decomposing the URL:
