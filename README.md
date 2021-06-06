@@ -96,10 +96,6 @@ The deployment is done automatically by the Heroku service and can be
 * [Heroku](https://www.heroku.com/platform) - The web framework used.
 * [pgAdmin](https://www.pgadmin.org/) - Advanced Open Source database. 
 
-## Authors
-* **Stav Lobel** 
-* **Yariv Garala**
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://www.mit.edu/~amini/LICENSE.md) file for details
