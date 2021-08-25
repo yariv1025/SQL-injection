@@ -1,7 +1,7 @@
 # SQL Injection Simulator
 
 <p align="center">
-  <img width="250" height="50" src="https://imagehost.imageupload.net/2020/04/27/injection.jpg">
+    <img width="250" height="50" src="https://i.ibb.co/r5YXFdC/Readme-photo.jpg">
 </p>
 
 
