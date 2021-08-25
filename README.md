@@ -1,8 +1,7 @@
 # SQL Injection Simulator
 
 <p align="center">
-    <img width="800" height="100" src="https://i.ibb.co/r5YXFdC/Readme-photo
-    .jpg">
+    <img width="800" height="100" src="https://i.ibb.co/r5YXFdC/Readme-photo.jpg">
 </p>
 
 
