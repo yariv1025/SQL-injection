@@ -71,17 +71,16 @@ often produce inherently insecure applications that are vulnerable to SQL inject
  the Injection.
  
  <p align="center">
-   <img width="800" height="200" src="https://i.ibb.co/sWGkpPY/SQLInjection
-   -simulator.png">
+   <img width="800" height="200" src="https://i.ibb.co/sWGkpPY/SQLInjection-simulator.png">
  </p>
  
 * First, you sign up to the website (All users’ details will be saved in
  PostgresDB).
  You will perform registration, and you will get a “succeeded” message:
  
-  <p align="center">
+<p align="center">
     <img width="800" height="100" src="https://i.ibb.co/1myssBP/1.png">
-  </p>
+</p>
    
   If you try to insert your details again, you will get the answer: "User already exists"
  
@@ -91,7 +90,7 @@ often produce inherently insecure applications that are vulnerable to SQL inject
     <img width="1100" height="100" src="https://i.ibb.co/L98YdHn/2.png">
 </p>
    
-   *Safe/Unsafe mode doesn’t matter here because we are inserting a legal string.
+>*Safe/Unsafe mode doesn’t matter here because we are inserting a legal string.
    
 * Third we will perform Injection. We concatenate the string “ ‘ or ‘2
    ’ = ‘2 ” to the query, and that will return TRUE in our DB,
@@ -114,13 +113,13 @@ often produce inherently insecure applications that are vulnerable to SQL inject
 * Unsafe mode – User string not checked.
   
 <p align="center">
-    <img width="800" height="700" src="https://i.ibb.co/P9QqfYY/3.png">
+    <img width="600" height="400" src="https://i.ibb.co/P9QqfYY/3.png">
 </p>
 
 The data can be verified by looking at our database:
 
 <p align="center">
-    <img width="800" height="700" src="https://i.ibb.co/m5zn1NY/4.png">
+    <img width="600" height="400" src="https://i.ibb.co/m5zn1NY/4.png">
 </p>
   
 * Safe mode – user string is checked.
@@ -164,7 +163,7 @@ Depending on the size of the change, we know how to estimate the vulnerability o
 with legitimate and illegitimate information. We will, therefore, perform the test solely on the site we have created.
 
 <p align="center">
-    <img width="600" height="100" src="https://i.ibb.co/ts42SJj/6.png">
+    <img width="800" height="150" src="https://i.ibb.co/ts42SJj/6.png">
 </p>
 
 * First, we insert the address of the website we want to check and press “Scan URL”. This address will be disassembled and
@@ -173,15 +172,16 @@ The part that appears after the question mark goes into the parameters_names var
 
 We will create the addresses list so that it includes the legitimate and illegitimate words in it so that we can perform the test.
 >    
-        Exam:
-        “…inject_word=legitimate_Variable1&inject_method=Safe/unsafe”
-        “…inject_word=legitimate_Variable2&inject_method=Safe/unsafe”
-        Etc.
-        “…inject_word=Illegitimate_Variable1&inject_method=Safe/unsafe”
-        “…inject_word=Illegitimate_Variable2&inject_method=Safe/unsafe”
-        Etc.
+Exam:
+“…inject_word=legitimate_Variable1&inject_method=Safe/unsafe”
+“…inject_word=legitimate_Variable2&inject_method=Safe/unsafe”
+Etc.
+“…inject_word=Illegitimate_Variable1&inject_method=Safe/unsafe”
+“…inject_word=Illegitimate_Variable2&inject_method=Safe/unsafe”
+Etc.
 >
-*We can’t concatenate anything to inject_method parameter because it has no meaning (therefore, this parameter is probably not vulnerable).
+>*We can’t concatenate anything to inject_method parameter because it has no
+ meaning (therefore, this parameter is probably not vulnerable).
 
 The illegitimate words are:
 ``` bash
@@ -224,14 +224,15 @@ characters,
 
 We can see in the above example that we have 180% of difference in the inject_word parameter.
 We understand from the result that the vulnerable part of our website is the parameter inject_word, because this part allows us to perform
-various manipulations by SQL injections. However, in the method_inject parameter, there is no vulnerability because the information we put
-in there does not reach the database or the place that allows manipulations to be performed. If we use an address with more parameters,
-they will appear in the table after the scan.
+various manipulations by SQL injections.
+However, in the method_inject parameter, there is no vulnerability because the information we put in there does not reach the database or
+the place that allows manipulations to be performed. If we use an address with more parameters, they will appear in the table after the scan.
 
 >*Because our site is intentionally written in such a way that it is vulnerable, the percentage of change for entering legitimate information
 versus illegitimate information will be a large percentage. This can also be understood from the example we presented earlier in the SQL Injection
 simulator. In fact, for entering a legitimate value like name@domain.com we will get a page with X characters and for an illegitimate value
 like ‘or '2' = '2 we will get X * n + d characters (d = constant number, n≥1, X≥1).
+
 
 ## Getting Started
 
