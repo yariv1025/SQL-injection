@@ -71,7 +71,7 @@ often produce inherently insecure applications that are vulnerable to SQL inject
  the Injection.
  
  <p align="center">
-   <img width="1100" height="300" src="https://i.ibb.co/sWGkpPY/SQLInjection
+   <img width="800" height="200" src="https://i.ibb.co/sWGkpPY/SQLInjection
    -simulator.png">
  </p>
  
