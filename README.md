@@ -312,8 +312,7 @@ The deployment is done automatically by the Heroku service and can be
 * [Heroku](https://www.heroku.com/platform) - The web framework used.
 * [pgAdmin](https://www.pgadmin.org/) - Advanced Open Source database. 
 
-## Authors
-* **Stav Lobel** 
+## Author
 * **Yariv Garala**
 
 ## License
